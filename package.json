@@ -10,15 +10,19 @@
     "@types/node": "^16.18.11",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "generate-react-cli": "^8.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "sass": "^1.58.0",
     "typescript": "^4.9.5",
+    "typescript-plugin-css-modules": "^4.1.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "component": "generate-react component",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -26,6 +30,44 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules": {
+          "@typescript-eslint/no-explicit-any": "warn",
+          "semi": "off",
+          "@typescript-eslint/semi": [
+            "warn"
+          ],
+          "@typescript-eslint/member-delimiter-style": [
+            "warn",
+            {
+              "multiline": {
+                "delimiter": "semi",
+                "requireLast": true
+              },
+              "singleline": {
+                "delimiter": "semi",
+                "requireLast": false
+              }
+            }
+          ],
+          "no-console": "warn",
+          "dot-notation": "warn",
+          "quotes": [
+            "warn",
+            "single",
+            {
+              "allowTemplateLiterals": false,
+              "avoidEscape": true
+            }
+          ],
+          "prefer-const": "warn"
+        }
+      }
     ]
   },
   "browserslist": {
